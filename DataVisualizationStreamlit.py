@@ -7,7 +7,7 @@ import seaborn as sns
 
 st.subheader("Data Review")
 
-### Import data (I assume this is the data that the user has already uploaded)
+### Import data
 df_mast = pd.read_csv('s2_aam_raw_data.csv', index_col = 0) # master data set
 df_imp = df_mast # imported data set
 
@@ -209,7 +209,7 @@ if binned_category_vars_selected:
         f"Select the number of bins to group {', '.join(names_to_bin[:-1])} and {names_to_bin[-1]} into",
         2, 20, 10
     )
-
+    
     # Apply binning to each variable
     for title, feature in binned_category_vars_selected.items():
 
@@ -222,7 +222,7 @@ if binned_category_vars_selected:
             labels = [f"{int(bins[i])} - {int(bins[i+1])}" for i in range(len(bins) - 1)]
         else:
             bins = np.linspace(min_value, max_value, num=num_bins)
-            
+
         if max_value >= 1000:
             labels = [f"{bins[i] / 1000:.0f}K - {bins[i + 1] / 1000:.0f}K" for i in range(len(bins) - 1)]
         else:
