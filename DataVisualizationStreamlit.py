@@ -371,11 +371,16 @@ for title, cols in selected_variables_post.items():
             plot_applicants(ax)
             graph_intro_title = 'Applicants Grouped by'
             handles, labels = ax.get_legend_handles_labels()
+            if len(unique_values) > 10:
+                ax.tick_params(axis='x', rotation=90)
+
 
         if identify_by_app_or_emp == "Employee":
             plot_employees(ax)
             graph_intro_title = 'Applicants Grouped by'
             handles, labels = ax.get_legend_handles_labels()
+            if len(unique_values) > 10:
+                ax.tick_params(axis='x', rotation=90)
 
         if identify_by_app_or_emp == "Both":
             ax1 = ax
@@ -386,6 +391,8 @@ for title, cols in selected_variables_post.items():
             handles1, labels1 = ax1.get_legend_handles_labels()
             handles2, labels2 = ax2.get_legend_handles_labels()
             handles, labels = handles1 + handles2, labels1 + labels2
+            if len(unique_values) > 10:
+                ax1.tick_params(axis='x', rotation=90)
 
 
         plt.title(f"{graph_intro_title} {title.title()}", fontsize=16)
@@ -395,7 +402,6 @@ for title, cols in selected_variables_post.items():
 
         # Rotate x-ticks for clarity if needed
         if len(unique_values) > 10:
-            # for ax1 in [ax1, ax2]:
-            ax1.tick_params(axis='x', rotation=90)
+            ax.tick_params(axis='x', rotation=90)
 
         st.pyplot(fig)
