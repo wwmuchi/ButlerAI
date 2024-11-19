@@ -171,7 +171,7 @@ def binned_vars_transform(binned_series, existing_bins = None, existing_labels =
     
     else:
         num_bins = st.slider(
-        f"Select the number of bins to group {col} into",
+        f"Select the number of bins to group {title} into",
         2, 20, 10,
         key=f'{col} num bins'
         )
